@@ -1,0 +1,33 @@
+.form-container{
+    margin-left:5%;
+    margin-top:5%;
+    margin-bottom:5%;
+    margin-right:5%;
+}
+.centered-element{
+    margin-left:20%;
+    margin-right:20%;
+}
+.cl{
+    height: 200px;
+}
+.add{
+    text-align: center;
+}
+
+.jumbotron {
+    height: 15px;
+    background-color:green;
+
+}
+.h1{
+    color: blue;
+}
+
+.vertical-center {
+    min-height: 15px;
+    min-height: 15vh;
+
+    display: flex;
+    align-items: center;
+}
