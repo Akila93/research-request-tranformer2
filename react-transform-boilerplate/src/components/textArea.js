@@ -8,9 +8,11 @@ export class TextArea extends React.Component {
         super(props);
     }
 
+
     render() {
+
         return (
-            <textarea className={this.props.ClassName} value ={this.props.value} onChange={this.props.handleChange}>  </textarea>
+            <textarea className={this.props.ClassName} value ={this.props.value}  rows={this.props.rows} onChange={this.props.handleChange}  >  </textarea>
         );
     }
 }

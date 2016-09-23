@@ -19,13 +19,11 @@ public class RequestService {
         query.addCriteria(
                 Criteria.where("appId").is(request.getAppId())
         );
-
-       Specification specification=generator.getMongoOperations().find(query,Specification.class,"specifications").get(0);
+        System.out.println(request.getAppId());
+        Specification specification=generator.getMongoOperations().find(query,Specification.class,"specifications").get(0);
 
         RequestTransformer transformer=new RequestTransformer(specification);
         request.setRequest(transformer.transform(request.getRequest()));
-
-
 
         return request;
     }

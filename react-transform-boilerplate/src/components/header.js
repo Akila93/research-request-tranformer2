@@ -11,7 +11,7 @@ export class Header extends Component{
                 <div className="container-fluid">
                     <div className="navbar-header">
                         <a className="navbar-brand" href="#">
-                            <img alt="Brand" src="/images/1.png" height="30px"/>
+                            <img alt="Brand" src="../images/1.png" height="30px"/>
                         </a>
 
                     </div>

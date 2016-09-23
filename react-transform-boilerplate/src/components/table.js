@@ -14,11 +14,12 @@ export class Table extends React.Component {
             <table className="table" ref={this.props.tableData}>
                 <thead>
                 <tr>
+                    <th></th>
                     <th>Key/Value</th>
                     <th>KeyFormatter</th>
                     <th>ValueType</th>
                     <th>ValueFormatter</th>
-                    <th>Preview</th>
+                    <th>Close</th>
                 </tr>
                 </thead>
 
@@ -27,7 +28,6 @@ export class Table extends React.Component {
                     {this.props.raws.map(function(raw,i){
                         return <TableRaw key={i} ref={raw.keyValue} raw={raw}/>
                     })}
-
                 </tbody>
             </table>
         );

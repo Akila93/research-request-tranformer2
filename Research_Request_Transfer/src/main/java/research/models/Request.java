@@ -1,16 +1,16 @@
 package research.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.ArrayList;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by akila on 8/23/16.
  */
 public class Request {
     private HashMap<String,Object> request;
+    @Id
     private String appId;
 
     public Request(HashMap<String,Object> request) {
@@ -27,7 +27,6 @@ public class Request {
         this.request = request;
     }
 
-    @JsonProperty
     public String getAppId() {
         return appId;
     }

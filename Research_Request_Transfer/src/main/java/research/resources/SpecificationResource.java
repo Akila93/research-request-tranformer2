@@ -1,16 +1,13 @@
 package research.resources;
 
-import research.models.SpecificationItem;
 import research.models.Specification;
 import research.services.SpecificationService;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by akila on 8/23/16.
@@ -25,8 +22,8 @@ public class SpecificationResource {
 
     @Path("/add")
     @POST
-    public void createSpecification(Specification specification) {
-        specificationService.addSpecification(specification);
+    public Specification createSpecification(Specification specification) {
+        return specificationService.addSpecification(specification);
     }
 
     @GET
@@ -36,6 +33,15 @@ public class SpecificationResource {
             return availableFormatting;
     }
 
+
+    @DELETE
+    @Path("/{appId}")
+    public Specification deleteSpecification(@PathParam("appId") String id) {
+
+        Specification specification = specificationService.deleteSpecification(id);
+        return specification;
+
+    }
 
     public String hi(@Context HttpServletResponse response){
         response.addHeader("Access-Control-Allow-Origin","*");
