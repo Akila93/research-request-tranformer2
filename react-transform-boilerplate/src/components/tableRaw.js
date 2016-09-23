@@ -38,6 +38,7 @@ export class TableRaw extends React.Component {
     }
     onSelect(indexSelected){}
     handleRemoveRow() {
+        console.log("handle remove raw in table raw");
         TableAction.deleteTableData(this.props.raw.keyValue,this.props.raw.keyValue);
     }
 

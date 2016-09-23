@@ -100,8 +100,6 @@ class TableDataStore extends EventEmitter {
 
     }
 
-
-
     deleteTableData(index,parentRaw){
         console.log(parentRaw);
         for(let j=0;j<=this.tableData.length;j++){
@@ -112,6 +110,7 @@ class TableDataStore extends EventEmitter {
                 this.rawCountOfParent(j,parentRaw);
                 console.log("count is"+this.count);
                 this.tableData.splice(j,this.count);
+                console.log(this.tableData);
                 this.emit("change");
                 break;
             }

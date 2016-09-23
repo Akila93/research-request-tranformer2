@@ -33,7 +33,9 @@ export class App extends Component {
     TableDataStore.on("change",()=>{
       this.setState({
       TableData: TableDataStore.getAll()
+
     })
+      console.log(this.state.TableData);
   })
   }
 
@@ -124,7 +126,7 @@ export class App extends Component {
     console.log("done");
   }
 
-  
+
   handleFetched(err,resp){
     try{
       if(resp){
