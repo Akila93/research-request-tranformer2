@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Badge } from './components/badge';
 import { Header } from './components/header';
-import { Footer } from './components/footer';
 import {Table} from './components/table';
 import {TextArea} from './components/textArea';
 import TableDataStore from './store/tableDataStore';
@@ -38,15 +37,35 @@ export class App extends Component {
   })
   }
 
-
-
   getFormattedResult(err,resp){
     Api.deleteSpecification("http://172.16.1.182:8080/specification/"+resp.body.appId,function(err,resp){
       console.log("done");
     });
-
     this.setState({result: resp.text})
-    //console.log(resp.text);
+
+  }
+
+  createRequst(obj,rawkey){
+    var self=this;
+    var keys=Object.keys(obj);
+    keys.forEach(function (key) {
+      let bool=false;
+      for (let i = 0; i <rawkey.length; i++) {
+        if (rawkey[i] === key) {
+          bool=true;
+        }
+      }
+      if(!bool){
+        delete obj[key];
+      }else{
+        if(!(typeof obj[key] === 'string')){
+          console.log(obj[key]);
+          obj[key]=self.createRequst(obj[key],rawkey);
+        }
+      }
+    },this);
+    return obj;
+
   }
 
 
@@ -55,14 +74,15 @@ export class App extends Component {
       appId:1,
       request:[]
     }
+
     if(resp){
-      console.log("app id :"+resp.body.appId);
       request.appId=resp.body.appId;
     }
     request.request=JSON.parse(this.state.value);
     let obj =JSON.parse(this.state.value);
     console.log(obj);
-    let req={};
+
+    let rawkey={};
     let tableRaws=this.refs["tableData"].refs;
     console.log(tableRaws);
     for(const x in tableRaws){
@@ -70,28 +90,24 @@ export class App extends Component {
       if(rowRefs["keyformatter"].state.title=="select" || rowRefs["formatter"].state.title=="select" || rowRefs["type"].state.title=="select"){
         continue;
       }
-      req[x]=obj[x];
+      rawkey[x]=obj[x];
     }
-    request.request=req;
+    var output=this.createRequst(obj,Object.keys(rawkey));
+    request.request=output;
     console.log(request.request);
     Api.setOnFetch(this.getFormattedResult.bind(this));
     Api.getRequest('http://172.16.1.182:8080/request',request);
   }
-
-
 
   handleChange(event){
     this.setState({value: event.target.value})
   }
 
 
-
   addTableData(key,KeyFormatter,ValueType,ValueFormatters,handleRemoveRow,visible,parentRaw,rawVisibility){
 
     TableAction.addTableData(key,KeyFormatter,ValueType,ValueFormatters,handleRemoveRow,visible,parentRaw,rawVisibility);
   }
-
-
 
   handleRemoveTableClick(){
     let table=this.refs.tableData;
@@ -104,13 +120,11 @@ export class App extends Component {
   }
 
 
-
   handleRemoveRow(){
     console.log("done");
   }
 
-
-
+  
   handleFetched(err,resp){
     try{
       if(resp){
