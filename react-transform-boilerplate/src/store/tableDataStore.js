@@ -9,57 +9,11 @@ class TableDataStore extends EventEmitter {
 
         super();
         this.count=1;
-        this.tableData=[
-            //{
-            //    keyValue: "fname",
-            //    KeyFormatter:
-            //        [
-            //            "toupper",
-            //            "tolower",
-            //            "camalCase"
-            //        ],
-            //    ValueType: ["String"],
-            //    ValueFormatters: [
-            //        [
-            //            "toupper",
-            //            "tolower",
-            //            "camalCase"
-            //        ]
-            //    ],
-            //
-            //    preview: "preveiw"
-            //
-            //
-            //},
-            //{
-            //    keyValue: "lname",
-            //    KeyFormatter:
-            //        [
-            //            "toupper",
-            //            "tolower",
-            //            "camalCase"
-            //        ],
-            //    ValueType: ["String","date"],
-            //    ValueFormatters:[
-            //        [
-            //            "toupper",
-            //            "tolower",
-            //            "camalCase"
-            //        ],
-            //        [
-            //            "long",
-            //            "short",
-            //            "median"
-            //        ]
-            //    ],
-            //    preview: "preveiw"
-            //
-            //}
-        ];
+        this.tableData=[ ];
     }
 
 
-    addTableData(keyValue,KeyFormatter,	ValueType,	ValueFormatters,handleRemoveRow,visible,parentRaw,rawVisibility){
+    addTableData(keyValue,KeyFormatter,	ValueType,	ValueFormatters,handleRemoveRow,visible,parentRaw,rawVisibility,onPreview,icon){
         console.log("parent raw is : "+parentRaw);
         for(let i=0;i<this.tableData.length;i++){
             if(this.tableData[i].keyValue==keyValue){
@@ -74,11 +28,15 @@ class TableDataStore extends EventEmitter {
             handleRemoveRow,
             visible,
             parentRaw,
-            rawVisibility
+            rawVisibility,
+            onPreview,
+            icon
         });
+        console.log("added TData is",this.tableData);
         this.emit("change");
 
     }
+
 
     rawCountOfParent(index,parentRaw){
 
@@ -101,53 +59,97 @@ class TableDataStore extends EventEmitter {
     }
 
     deleteTableData(index,parentRaw){
-        console.log(parentRaw);
-        for(let j=0;j<=this.tableData.length;j++){
-            let raw=this.tableData[j];
+        //console.log(parentRaw);
+        const len=this.tableData.length;
+        let newTable =[];
+        for(let item=0;item<len;item++){
+            newTable.push(this.tableData[item]);
+        }
+        //console.log(newTable,this.tableData,index,parentRaw);
+        for(let j=0;j<len;j++){
+            let raw=newTable[j];
             if(raw["keyValue"]===index){
                 console.log("index is :"+j);
                 console.log("inside deleteTable data"+parentRaw);
                 this.rawCountOfParent(j,parentRaw);
                 console.log("count is"+this.count);
-                this.tableData.splice(j,this.count);
-                console.log(this.tableData);
-                this.emit("change");
+                console.log("TData is",this.tableData);
+                newTable.splice(j,this.count);
+                console.log("now TData is",newTable);
+                this.tableData=newTable;
+
+                break;
+            }
+        }
+        this.emit("change");
+
+    }
+
+
+
+    updateTableRawVisibility(parentRaw,icon){
+        for (let itemNumber in this.tableData) {
+            let raw=this.tableData[itemNumber];
+
+            if(raw["parentRaw"]===parentRaw){
+                if(icon==='icon-plus'){
+                    this.tableData[itemNumber]["rawVisibility"]='table-row';
+                    if(raw["visible"]){
+                        raw["icon"]='icon-minus'
+                    }
+                }else{
+                    this.tableData[itemNumber]["rawVisibility"]='none';
+                    if(raw["visible"]){
+                        raw["icon"]='icon-plus'
+                    }
+                }
+                if(raw["visible"]){
+                    this.updateTableRawVisibility(raw["keyValue"],icon);
+                }
+
+            }
+        }
+    }
+
+    updateTableData(parentRaw){
+        let icon;
+        for (let itemNumber in this.tableData) {
+            let raw = this.tableData[itemNumber];
+            if(raw["keyValue"]===parentRaw){
+                icon=raw["icon"]
+                if(raw["icon"]==='icon-plus'){
+                    raw["icon"]='icon-minus';
+                }else{
+                    raw["icon"]='icon-plus';
+                }
                 break;
             }
         }
 
+        this.updateTableRawVisibility(parentRaw,icon);
+        this.emit("change");
     }
 
 
-    updateTableData(parentRaw){
-
+    updateTableDataOnEdit(oldRef,newRef){
         for (let itemNumber in this.tableData) {
-
-            console.log(itemNumber);
-            console.log(this.tableData[itemNumber]);
             let raw=this.tableData[itemNumber];
-            if(raw["parentRaw"]===parentRaw){
-
-                if(raw["rawVisibility"]==='none'){
-                    this.tableData[itemNumber]["rawVisibility"]='table-row';
-                }else{
-                    this.tableData[itemNumber]["rawVisibility"]='none';
+            if(raw["keyValue"]===oldRef){
+                raw["keyValue"]=newRef;
+                for (let itemNumber in this.tableData) {
+                    let raw=this.tableData[itemNumber];
+                    if(raw["parentRaw"]===oldRef){
+                        raw["parentRaw"]=newRef;
+                    }
                 }
-
-                console.log(raw["parentRaw"]["visible"]);
-                if(raw["visible"]){
-                    this.updateTableData(raw["keyValue"])
-                }
-
-                console.log("equality is match");
-                console.log(this.tableData[itemNumber]);
-
+                break;
             }
         }
 
         this.emit("change");
-        console.log("new function working :"+parentRaw);
     }
+
+
 
     getAll() {
         return this.tableData;
@@ -156,7 +158,8 @@ class TableDataStore extends EventEmitter {
     handleActions(action) {
         switch(action.type) {
             case "ADD_DATA": {
-                this.addTableData(action.keyValue,action.KeyFormatter,	action.ValueType,	action.ValueFormatters,action.handleRemoveRow,action.visible,action.parentRaw,action.rawVisibility);
+                this.addTableData(action.keyValue,action.KeyFormatter,	action.ValueType,	action.ValueFormatters,action.handleRemoveRow,action.visible,action.parentRaw,action.rawVisibility,action.onPreview,action.icon);
+                console.log("icon is inside table store",action.icon)
                 break;
             }
             case "RECEIVE_DATA": {
@@ -169,6 +172,9 @@ class TableDataStore extends EventEmitter {
                 break;
             case "UPDATE_DATA":
                 this.updateTableData(action.parentRaw);
+                break;
+            case "UPDATE_DATA_ON_EDIT":
+                this.updateTableDataOnEdit(action.oldRef,action.newRef);
                 break;
         }
     }

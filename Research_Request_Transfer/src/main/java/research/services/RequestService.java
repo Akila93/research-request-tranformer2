@@ -4,6 +4,7 @@ package research.services;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import research.db.MongoOperationGenerator;
+import research.models.Beam;
 import research.models.Request;
 import research.models.Specification;
 import research.formatengine.*;
@@ -23,8 +24,14 @@ public class RequestService {
         Specification specification=generator.getMongoOperations().find(query,Specification.class,"specifications").get(0);
 
         RequestTransformer transformer=new RequestTransformer(specification);
-        request.setRequest(transformer.transform(request.getRequest()));
+        request.setRequestBody(transformer.transform(request.getRequestBody()));
 
         return request;
+    }
+
+    public Request handleRequestPreview(Beam beam) {
+        RequestTransformer transformer=new RequestTransformer(beam.getSpecification());
+        beam.getRequest().setRequestBody(transformer.transform(beam.getRequest().getRequestBody()));
+        return beam.getRequest();
     }
 }

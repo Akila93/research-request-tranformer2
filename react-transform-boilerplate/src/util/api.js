@@ -11,18 +11,18 @@ class Api {
       resp ? console.log(resp) : console.log(err)
     }
 
-    fetchTableData(url) {
+    fetchTableData() {
 
         let self = this;
-        SuperAgent.get(url)
+        SuperAgent.get('http://172.16.1.182:8080/specification')
             .set('Accept', 'application/json')
             .set('Content-Type', 'application/json')
             .set('Access-Control-Allow-Origin', '*')
             .end(self.onFetch);
     }
-    addSpecification(url,body,handleRequest){
+    addSpecification(body,handleRequest){
         let self=this;
-        SuperAgent.post(url)
+        SuperAgent.post('http://172.16.1.182:8080/specification')
              .set('Content-Type', 'application/json')
              .send(JSON.stringify(body))
              .set('Access-Control-Allow-Origin','*')
@@ -36,12 +36,12 @@ class Api {
             .end(handleDelete)
 
     }
-    getRequest(url,body){
+    getRequest(body){
         let self=this;
         let request={
             request:body.request
         }
-        SuperAgent.post(url)
+        SuperAgent.post('http://172.16.1.182:8080/request')
             .send(JSON.stringify(request))
             .set('appId',body.appId)
             .set('Access-Control-Allow-Origin','*')
@@ -50,6 +50,17 @@ class Api {
             .end(self.onFetch);
 
     }
+
+    handlePreviewRequest(body,handleRequest){
+        SuperAgent.post('http://172.16.1.182:8080/request/preview')
+            .set('Content-Type', 'application/json')
+            .send(JSON.stringify(body))
+            .set('Access-Control-Allow-Origin','*')
+            .set('Accept', 'application/json')
+            .set('Content-Type', 'application/json')
+            .end(handleRequest)
+    }
+
 }
 
 const api=new Api;

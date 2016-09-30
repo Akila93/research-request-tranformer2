@@ -56,8 +56,11 @@ public class RequestTransformer {
         while (iterator.hasNext()){
             Map.Entry pair = (Map.Entry) iterator.next();
             SpecificationItem specificatinItem = find.find((String) pair.getKey());
-            //request.put((String) pair.getKey(),pair.getValue());
-            request.put((String) this.elementTransform(pair.getKey(),specificatinItem,true),this.elementTransform(pair.getValue(),specificatinItem,false));
+            if(specificatinItem==null) {
+                request.put((String) pair.getKey(), pair.getValue());
+            }else {
+                request.put((String) this.elementTransform(pair.getKey(), specificatinItem, true), this.elementTransform(pair.getValue(), specificatinItem, false));
+            }
         }
         return request;
     }
@@ -66,15 +69,15 @@ public class RequestTransformer {
     private Object elementTransform(Object element,SpecificationItem specificationItem,boolean isKey){
 
         if (isKey) {
-                return this.actualElementTransform("String", element, specificationItem.getKeyFormatter());
+                return this.actualElementTransform("String", element, specificationItem.getKeyFormatter(),specificationItem.getValueInputFormat());
             } else {
 
-                return this.actualElementTransform(specificationItem.getValueType(), element, specificationItem.getValueFormatter());
+                return this.actualElementTransform(specificationItem.getValueType(), element, specificationItem.getValueFormatter(),specificationItem.getValueInputFormat());
             }
 
     }
 
-    private Object actualElementTransform(String type,Object element,String formattingpatttern){
+    private Object actualElementTransform(String type,Object element,String formattingpatttern,String valueInputFormat){
         if (type.equals("String")) {
 
             String stringItem = (String) element;
@@ -91,7 +94,7 @@ public class RequestTransformer {
             return element;
         }else if( type.equals("Date")) {
             DateFormatter dateFormatter = new DateFormatter(formattingpatttern);
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(valueInputFormat);
             try {
                 Date parse = simpleDateFormat.parse((String) element);
                 String format = dateFormatter.format(parse);

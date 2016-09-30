@@ -13,19 +13,29 @@ public class SpecificationItem {
     private String keyFormatter;
     private String valueFormatter;
     private String valueType;
+    private String valueInputFormat;
 
     public SpecificationItem(){
 
     }
 
-    public SpecificationItem(String key, String keyFormatter, String valueFormatter,String valueType){
+    public SpecificationItem(String key, String keyFormatter, String valueFormatter,String valueType,String valueInputFormat){
         this.setKeyFormatter(keyFormatter);
         this.setKey(key);
         this.setValueFormatter(valueFormatter);
         this.setValueType(valueType);
+        this.setValueInputFormat(valueInputFormat);
 
     }
 
+    @JsonProperty
+    public String getValueInputFormat() {
+        return valueInputFormat;
+    }
+
+    public void setValueInputFormat(String valueInputFormat) {
+        this.valueInputFormat = valueInputFormat;
+    }
 
     @JsonProperty
     public String getKey() {

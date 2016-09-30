@@ -20,14 +20,12 @@ public class SpecificationResource {
     private SpecificationService specificationService = new SpecificationService();
 
 
-    @Path("/add")
     @POST
     public Specification createSpecification(Specification specification) {
         return specificationService.addSpecification(specification);
     }
 
     @GET
-
     public Map<String,ArrayList<String>> getAvailableFormatting() {
             Map<String, ArrayList<String>> availableFormatting = specificationService.getAvailableFormatting();
             return availableFormatting;
@@ -41,11 +39,6 @@ public class SpecificationResource {
         Specification specification = specificationService.deleteSpecification(id);
         return specification;
 
-    }
-
-    public String hi(@Context HttpServletResponse response){
-        response.addHeader("Access-Control-Allow-Origin","*");
-        return "my name is nuwantha";
     }
 
 

@@ -7,13 +7,14 @@ import {TableRaw} from "./tableRaw"
 export class Table extends React.Component {
     constructor(props){
         super(props);
-
     }
     render() {
+        let app=this.props.app;
         return (
             <table className="table" ref={this.props.tableData}>
                 <thead>
                 <tr>
+                    <th></th>
                     <th></th>
                     <th>Key/Value</th>
                     <th>KeyFormatter</th>
@@ -25,9 +26,10 @@ export class Table extends React.Component {
 
 
                 <tbody>
-                    {this.props.raws.map(function(raw,i){
-                        return <TableRaw key={i} ref={raw.keyValue} raw={raw}/>
-                    })}
+                    {this.props.raws.map(function(raw){
+                        //console.log("the ref Value is : ",raw.keyValue);
+                        return <TableRaw app={app} key={raw.keyValue} ref={raw.keyValue} raw={raw}/>
+                    }.bind(app))}
                 </tbody>
             </table>
         );

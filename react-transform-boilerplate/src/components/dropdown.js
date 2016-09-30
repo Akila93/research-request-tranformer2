@@ -7,8 +7,10 @@ export class Dropdown extends Component{
         super(props);
 
         this.state={clicked:false,
-            title: this.props.title
+            title: this.props.title,
+            firstRender:true
         };
+        this.renderListItem = this.renderListItem.bind(this);
 
     }
 
@@ -17,6 +19,9 @@ export class Dropdown extends Component{
     handleClick() {
         this.setState({clicked:!this.state.clicked});
     }
+
+
+
     getIndexOfSelected(title){
 
         for(let x=0;x< this.props.items.length;x++){
@@ -28,12 +33,28 @@ export class Dropdown extends Component{
 
     }
 
-    whenClicked(title){
 
-        this.props.onItemSelect(this.getIndexOfSelected(title),title);
-        this.setState({clicked:false, title: title});
+
+    whenClicked(title){
+        let self = this;
+        this.setState({clicked:false, title: title,firstRender:false},function(){
+            this.props.onItemSelect(this.getIndexOfSelected(title),title);
+        }.bind(self));
 
     }
+
+
+
+    renderListItem(){
+        if(this.props.noInitial){
+            return <Listitem whenClicked={this.whenClicked.bind(this)} className="" item={[]} link={"#"}/>;
+        }
+        return this.props.items.map(function(item){
+            return <Listitem whenClicked={this.whenClicked.bind(this)} className="" item={item} link={"#"}/>;
+
+        }.bind(this))
+    }
+
 
 
     render() {
@@ -41,10 +62,7 @@ export class Dropdown extends Component{
             <div className="dropdown">
                 <Badge  iconClassName={"caret"} handleClick={this.handleClick.bind(this)} className={"btn-default dropdown-toggle"} ref={this.props.ref} title={this.state.title}/>
                 <ul ref="dropdownlist" className={"dropdown-menu"+(this.state.clicked?" show":"")}>
-                    {this.props.items.map(function(item){
-                        return <Listitem whenClicked={this.whenClicked.bind(this)} className="" item={item} link={"#"}/>;
-
-                    }.bind(this))}
+                    {this.renderListItem()}
 
                 </ul>
             </div>

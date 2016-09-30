@@ -4,7 +4,7 @@
 import dispatcher from "../dispatcher";
 
 
-export function addTableData(keyValue,KeyFormatter,	ValueType,	ValueFormatters,handleRemoveRow,visible,parentRaw,rawVisibility) {
+export function addTableData(keyValue,KeyFormatter,	ValueType,	ValueFormatters,handleRemoveRow,visible,parentRaw,rawVisibility,onPreview,icon) {
     dispatcher.dispatch({
         type: "ADD_DATA",
         keyValue,
@@ -14,9 +14,13 @@ export function addTableData(keyValue,KeyFormatter,	ValueType,	ValueFormatters,h
         handleRemoveRow,
         visible,
         parentRaw,
-        rawVisibility
+        rawVisibility,
+        onPreview,
+        icon
     });
 }
+
+
 
 export function deleteTableData(keyValue,parentRaw) {
     console.log("parentRawIs"+parentRaw);
@@ -26,11 +30,24 @@ export function deleteTableData(keyValue,parentRaw) {
         parentRaw,
     });
 }
+
+
+
 export function updateTableData(parentRaw) {
         console.log("inside the action"+parentRaw);
         dispatcher.dispatch({
             type: "UPDATE_DATA",
-            parentRaw,
+            parentRaw
         });
+}
+
+
+export function updateTableDataOnEdit(oldRef,newRef) {
+    console.log("inside the action:refs:",oldRef,newRef);
+    dispatcher.dispatch({
+        type: "UPDATE_DATA_ON_EDIT",
+        oldRef,
+        newRef
+    });
 }
 
