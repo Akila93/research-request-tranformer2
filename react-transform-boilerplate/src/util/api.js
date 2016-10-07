@@ -11,14 +11,13 @@ class Api {
       resp ? console.log(resp) : console.log(err)
     }
 
-    fetchTableData() {
+    fetchTableData(fetchRequest) {
 
-        let self = this;
         SuperAgent.get('http://172.16.1.182:8080/specification')
             .set('Accept', 'application/json')
             .set('Content-Type', 'application/json')
             .set('Access-Control-Allow-Origin', '*')
-            .end(self.onFetch);
+            .end(fetchRequest);
     }
     addSpecification(body,handleRequest){
         let self=this;

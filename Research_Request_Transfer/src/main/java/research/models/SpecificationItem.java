@@ -14,6 +14,7 @@ public class SpecificationItem {
     private String valueFormatter;
     private String valueType;
     private String valueInputFormat;
+    private String updatedKey;
 
     public SpecificationItem(){
 
@@ -26,6 +27,15 @@ public class SpecificationItem {
         this.setValueType(valueType);
         this.setValueInputFormat(valueInputFormat);
 
+    }
+
+    @JsonProperty
+    public String getUpdatedKey() {
+        return updatedKey;
+    }
+
+    public void setUpdatedKey(String updatedKey) {
+        this.updatedKey = updatedKey;
     }
 
     @JsonProperty

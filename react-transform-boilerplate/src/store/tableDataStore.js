@@ -13,7 +13,7 @@ class TableDataStore extends EventEmitter {
     }
 
 
-    addTableData(keyValue,KeyFormatter,	ValueType,	ValueFormatters,handleRemoveRow,visible,parentRaw,rawVisibility,onPreview,icon){
+    addTableData(keyValue,KeyFormatter,	ValueType,	ValueFormatters,handleRemoveRow,visible,parentRaw,rawVisibility,onPreview,icon,dropdownTitle,initialKey,selectedKeyFormatter,selectedValueFormatter,selectedDateInputFormatter,selectedDateOutputFormatter){
         console.log("parent raw is : "+parentRaw);
         for(let i=0;i<this.tableData.length;i++){
             if(this.tableData[i].keyValue==keyValue){
@@ -30,7 +30,13 @@ class TableDataStore extends EventEmitter {
             parentRaw,
             rawVisibility,
             onPreview,
-            icon
+            icon,
+            dropdownTitle,
+            initialKey,
+            selectedKeyFormatter,
+            selectedValueFormatter,
+            selectedDateInputFormatter,
+            selectedDateOutputFormatter,
         });
         console.log("added TData is",this.tableData);
         this.emit("change");
@@ -58,14 +64,14 @@ class TableDataStore extends EventEmitter {
 
     }
 
-    deleteTableData(index,parentRaw){
+    deleteTableData(index,parentRaw,onPreview){
         //console.log(parentRaw);
         const len=this.tableData.length;
         let newTable =[];
         for(let item=0;item<len;item++){
             newTable.push(this.tableData[item]);
         }
-        //console.log(newTable,this.tableData,index,parentRaw);
+
         for(let j=0;j<len;j++){
             let raw=newTable[j];
             if(raw["keyValue"]===index){
@@ -82,6 +88,8 @@ class TableDataStore extends EventEmitter {
             }
         }
         this.emit("change");
+        //onPreview();
+
 
     }
 
@@ -131,11 +139,19 @@ class TableDataStore extends EventEmitter {
     }
 
 
-    updateTableDataOnEdit(oldRef,newRef){
+    updateTableDataOnEdit(oldRef,newRef,selectedKeyFormatter,selectedValueFormatter,selectedDateInputFormatter,selectedDateOutputFormatter){
         for (let itemNumber in this.tableData) {
             let raw=this.tableData[itemNumber];
+            console.log("raw is(updateTableDataOnEdit)",raw);
             if(raw["keyValue"]===oldRef){
                 raw["keyValue"]=newRef;
+                raw["selectedKeyFormatter"]=selectedKeyFormatter;
+                raw["selectedValueFormatter"]=selectedValueFormatter;
+                raw["selectedDateInputFormatter"]=selectedDateInputFormatter;
+                raw["selectedDateOutputFormatter"]=selectedDateOutputFormatter;
+
+                console.log("selectedKeyFormatter",selectedKeyFormatter);
+
                 for (let itemNumber in this.tableData) {
                     let raw=this.tableData[itemNumber];
                     if(raw["parentRaw"]===oldRef){
@@ -149,6 +165,10 @@ class TableDataStore extends EventEmitter {
         this.emit("change");
     }
 
+    deleteAll() {
+        this.tableData = [];
+        this.emit("change");
+    }
 
 
     getAll() {
@@ -158,8 +178,8 @@ class TableDataStore extends EventEmitter {
     handleActions(action) {
         switch(action.type) {
             case "ADD_DATA": {
-                this.addTableData(action.keyValue,action.KeyFormatter,	action.ValueType,	action.ValueFormatters,action.handleRemoveRow,action.visible,action.parentRaw,action.rawVisibility,action.onPreview,action.icon);
-                console.log("icon is inside table store",action.icon)
+                this.addTableData(action.keyValue,action.KeyFormatter,action.ValueType,action.ValueFormatters,action.handleRemoveRow,action.visible,action.parentRaw,action.rawVisibility,action.onPreview,action.icon,action.dropdownTitle,action.initialKey,action.selectedKeyFormatter,action.selectedValueFormatter,action.selectedDateInputFormatter,action.selectedDateOutputFormatter);
+                console.log("dropdowntitle is inside table store",action.dropdownTitle)
                 break;
             }
             case "RECEIVE_DATA": {
@@ -168,13 +188,16 @@ class TableDataStore extends EventEmitter {
                 break;
             }
             case "DELETE_DATA":
-                this.deleteTableData(action.keyValue,action.parentRaw);
+                this.deleteTableData(action.keyValue,action.parentRaw,action.onPreview);
                 break;
             case "UPDATE_DATA":
                 this.updateTableData(action.parentRaw);
                 break;
             case "UPDATE_DATA_ON_EDIT":
-                this.updateTableDataOnEdit(action.oldRef,action.newRef);
+                this.updateTableDataOnEdit(action.oldRef,action.newRef,action.selectedKeyFormatter,action.selectedValueFormatter,action.selectedDateInputFormatter,action.selectedDateOutputFormatter);
+                break;
+            case "REMOVE_ALL":
+                this.deleteAll();
                 break;
         }
     }

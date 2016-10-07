@@ -4,7 +4,7 @@
 import dispatcher from "../dispatcher";
 
 
-export function addTableData(keyValue,KeyFormatter,	ValueType,	ValueFormatters,handleRemoveRow,visible,parentRaw,rawVisibility,onPreview,icon) {
+export function addTableData(keyValue,KeyFormatter,	ValueType,	ValueFormatters,handleRemoveRow,visible,parentRaw,rawVisibility,onPreview,icon,dropdownTitle,initialKey,selectedKeyFormatter,selectedValueFormatter,selectedDateInputFormatter,selectedDateOutputFormatter) {
     dispatcher.dispatch({
         type: "ADD_DATA",
         keyValue,
@@ -16,18 +16,25 @@ export function addTableData(keyValue,KeyFormatter,	ValueType,	ValueFormatters,h
         parentRaw,
         rawVisibility,
         onPreview,
-        icon
+        icon,
+        dropdownTitle,
+        initialKey,
+        selectedKeyFormatter,
+        selectedValueFormatter,
+        selectedDateInputFormatter,
+        selectedDateOutputFormatter,
     });
 }
 
 
 
-export function deleteTableData(keyValue,parentRaw) {
+export function deleteTableData(keyValue,parentRaw,onPreview) {
     console.log("parentRawIs"+parentRaw);
     dispatcher.dispatch({
         type: "DELETE_DATA",
         keyValue,
         parentRaw,
+        onPreview
     });
 }
 
@@ -42,12 +49,23 @@ export function updateTableData(parentRaw) {
 }
 
 
-export function updateTableDataOnEdit(oldRef,newRef) {
-    console.log("inside the action:refs:",oldRef,newRef);
+export function updateTableDataOnEdit(oldRef,newRef,selectedKeyFormatter,selectedValueFormatter,selectedDateInputFormatter,selectedDateOutputFormatter) {
+    console.log("inside the action:refs:",oldRef,newRef,selectedKeyFormatter,selectedValueFormatter);
     dispatcher.dispatch({
         type: "UPDATE_DATA_ON_EDIT",
         oldRef,
-        newRef
+        newRef,
+        selectedKeyFormatter,
+        selectedValueFormatter,
+        selectedDateInputFormatter,
+        selectedDateOutputFormatter,
+    });
+
+
+}
+export function deleteAll() {
+    dispatcher.dispatch({
+        type: "REMOVE_ALL"
     });
 }
 

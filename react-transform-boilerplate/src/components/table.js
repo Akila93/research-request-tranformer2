@@ -9,21 +9,20 @@ export class Table extends React.Component {
         super(props);
     }
     render() {
+        let stylesForTh={backgroundColor:'black',color:'white'};
         let app=this.props.app;
         return (
             <table className="table" ref={this.props.tableData}>
                 <thead>
                 <tr>
-                    <th></th>
-                    <th></th>
-                    <th>Key/Value</th>
-                    <th>KeyFormatter</th>
-                    <th>ValueType</th>
-                    <th>ValueFormatter</th>
-                    <th>Close</th>
+                    <th style={stylesForTh}></th>
+                    <th style={stylesForTh}>Key/Value</th>
+                    <th style={stylesForTh}>KeyFormatter</th>
+                    <th style={stylesForTh}>ValueType</th>
+                    <th style={stylesForTh}>ValueFormatter</th>
+                    <th style={stylesForTh}>Skip</th>
                 </tr>
                 </thead>
-
 
                 <tbody>
                     {this.props.raws.map(function(raw){

@@ -30,9 +30,8 @@ public class RequestResource {
     @Produces({"application/json"})
     @Consumes({"application/json"})
     public Request handleRequestPreview(Beam beam) {
-        System.out.println(beam);
-        System.out.println(this.service.handleRequestPreview(beam).getRequestBody());
 
+        System.err.println(beam.getRequest().getRequestBody());
         return this.service.handleRequestPreview(beam);
 
     }

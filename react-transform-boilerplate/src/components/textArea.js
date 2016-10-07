@@ -12,7 +12,7 @@ export class TextArea extends React.Component {
     render() {
 
         return (
-            <textarea className={this.props.ClassName} value ={this.props.value}  rows={this.props.rows} onChange={this.props.handleChange}  >  </textarea>
+            <textarea data-toggle="tooltip" data-placement="bottom" title={this.props.toolTip} className={this.props.ClassName} value ={this.props.value}  rows={this.props.rows} onChange={this.props.handleChange}  >  </textarea>
         );
     }
 }

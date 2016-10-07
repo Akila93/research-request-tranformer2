@@ -59,6 +59,8 @@ public class RequestTransformer {
             if(specificatinItem==null) {
                 request.put((String) pair.getKey(), pair.getValue());
             }else {
+
+                //if(specificatinItem.getKeyFormatter())
                 request.put((String) this.elementTransform(pair.getKey(), specificatinItem, true), this.elementTransform(pair.getValue(), specificatinItem, false));
             }
         }
@@ -69,17 +71,35 @@ public class RequestTransformer {
     private Object elementTransform(Object element,SpecificationItem specificationItem,boolean isKey){
 
         if (isKey) {
-                return this.actualElementTransform("String", element, specificationItem.getKeyFormatter(),specificationItem.getValueInputFormat());
+                return this.actualElementTransform(element,specificationItem,true);
             } else {
 
-                return this.actualElementTransform(specificationItem.getValueType(), element, specificationItem.getValueFormatter(),specificationItem.getValueInputFormat());
+                return this.actualElementTransform(element, specificationItem,false);
             }
 
     }
 
-    private Object actualElementTransform(String type,Object element,String formattingpatttern,String valueInputFormat){
-        if (type.equals("String")) {
+    private Object actualElementTransform(Object element,SpecificationItem specificationItem,boolean isKey){
+        String type=specificationItem.getValueType();
+        String formattingpatttern;
+        if(isKey){
+            formattingpatttern=specificationItem.getKeyFormatter();
+        }
+        else {
+            formattingpatttern=specificationItem.getValueFormatter();
+        }
 
+        if(formattingpatttern.equals("nothing")){
+            return element;
+
+            
+        }
+
+        if (isKey || type.equals("String")) {
+
+            if(isKey && formattingpatttern.equals("custom")){
+                return specificationItem.getUpdatedKey();
+            }
             String stringItem = (String) element;
             Class cls = null;
             try {
@@ -94,7 +114,7 @@ public class RequestTransformer {
             return element;
         }else if( type.equals("Date")) {
             DateFormatter dateFormatter = new DateFormatter(formattingpatttern);
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(valueInputFormat);
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(specificationItem.getValueInputFormat());
             try {
                 Date parse = simpleDateFormat.parse((String) element);
                 String format = dateFormatter.format(parse);
@@ -108,6 +128,13 @@ public class RequestTransformer {
                 RequestTransformer transformer = new RequestTransformer(this.specification);
             HashMap<String, Object> map = (HashMap<String, Object>) element;
                 return transformer.transform(map);
+        }else if(type.equals("Number")){
+
+            NumberFormatter numberFormatter = new NumberFormatter(formattingpatttern);
+            String format = numberFormatter.format(String.valueOf(element));
+            System.err.println(format);
+            return format;
+
         }
 
         return element;

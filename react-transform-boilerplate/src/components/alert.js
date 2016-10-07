@@ -9,9 +9,10 @@ export class Alert extends React.Component {
     }
 
     render() {
-        return (<div className={"alert alert-info fade "+this.props.fade}>
-            <a href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Info!</strong> Your App Id is {this.props.msg}
+        let styleForAlert={backgroundColor:'black',color:'white'}
+        return (<div style={styleForAlert} className={"alert fade "+this.props.fade}>
+            <a style={styleForAlert} href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong style={{color:''}}>Info!</strong> Your App Id is  <ins style={{color:''}}>{this.props.msg} </ins>
         </div>);
     }
 }

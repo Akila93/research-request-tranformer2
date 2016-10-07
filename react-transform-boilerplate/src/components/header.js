@@ -6,22 +6,21 @@ export class Header extends Component{
         super(props);
     }
     render() {
-        return (
-            <nav className="navbar navbar-default">
-                <div className="container-fluid">
-                    <div className="navbar-header">
-                        <a className="navbar-brand" href="#">
-                            <img alt="Brand" src="../images/1.png" height="30px"/>
-                        </a>
 
-                    </div>
-                    <div className="row">
-                        <ul className="nav nav-pills navbar-right rightmag topmag">
-                            <Listitem  className="active" item={"Request"} link={"#"}></Listitem>
-                            <Listitem className=""item={"About"} link={"#"}></Listitem>
-                            <Listitem className="" item={"Profile"} link={"#"}></Listitem>
-                        </ul>
-                    </div>
+        let divStyle = {
+
+            backgroundColor :"black",
+            color:"white"
+
+        };
+        return (
+            <nav className="navbar navbar-default" style={divStyle}>
+                <div className="container-fluid">
+
+                    <center>
+                        <h2>Research Request Transformer</h2>
+                    </center>
+
                 </div>
             </nav>
         );
