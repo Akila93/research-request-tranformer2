@@ -15,18 +15,27 @@ public class SpecificationItem {
     private String valueType;
     private String valueInputFormat;
     private String updatedKey;
+    private String operationKey;
 
     public SpecificationItem(){
 
     }
 
-    public SpecificationItem(String key, String keyFormatter, String valueFormatter,String valueType,String valueInputFormat){
+    public SpecificationItem(String key, String keyFormatter, String valueFormatter,String valueType,String valueInputFormat,String operationKey){
         this.setKeyFormatter(keyFormatter);
         this.setKey(key);
         this.setValueFormatter(valueFormatter);
         this.setValueType(valueType);
         this.setValueInputFormat(valueInputFormat);
+        this.operationKey=operationKey;
+    }
+    @JsonProperty
+    public String getOperationKey() {
+        return operationKey;
+    }
 
+    public void setOperationKey(String operationKey) {
+        this.operationKey = operationKey;
     }
 
     @JsonProperty

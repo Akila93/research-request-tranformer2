@@ -16,7 +16,7 @@ public class FormatPatternServer {
 
     private FormatPatternServer() {
 
-        String[] datePattern = new String[] {"dd-MM-yy","dd-MM-yy","MM-dd-yyyy","yyyy-MM-dd","yyyy-MM-dd HH:mm:ss","yyyy-MM-dd HH:mm:ss.SSS"};
+        String[] datePattern = new String[] {"dd-MM-yy","dd-MMM-yy","dd-MM-yy","dd-MMM-yy","MM-dd-yyyy","MMM-dd-yyyy","yyyy-MM-dd","yyyy-MMM-dd","yyyy-MM-dd HH:mm:ss"};
         dateFormatPattern.addAll(Arrays.asList(datePattern));
 
         String[] numberPattern = new String[] {"###,###.###","###,###.##","000000.000","$###,###","$###,###.000","-###,###.000","-###,###"};

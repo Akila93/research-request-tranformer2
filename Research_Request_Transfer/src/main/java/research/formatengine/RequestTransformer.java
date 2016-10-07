@@ -135,6 +135,10 @@ public class RequestTransformer {
             System.err.println(format);
             return format;
 
+        }else if(type.equals("List")){
+            ListFormatter listFormatter = new ListFormatter();
+            listFormatter.calculateTotal(element,specificationItem.getOperationKey());
+
         }
 
         return element;

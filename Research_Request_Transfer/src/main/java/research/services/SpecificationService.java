@@ -39,7 +39,6 @@ public class SpecificationService {
                 stringFormatList.add(annotation.methodTask());
             }
         }
-
         ArrayList<String> nestedList = new ArrayList<>();
         nestedList.add("Nested");
         ArrayList<String> numberFormatPatternList = FormatPatternServer.getFormatPatternServer().getNumberFormatPattern();
