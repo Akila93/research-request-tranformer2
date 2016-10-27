@@ -1,0 +1,54 @@
+{
+  "request":
+
+  {
+    "requestBody":
+    {
+      "name":"nimal",
+      "marks": [
+        {
+          "subjectName":"Eng",
+          "testDate":"2014-09-43",
+          "value":"78"
+
+        }
+      ,
+        {
+          "subjectName":"Maths",
+          "testDate":"2014-09-43",
+          "value":"56"
+
+        }
+      ]
+    }
+  },
+  "specification":
+  {
+    "list": [
+      {
+        "key":"marks",
+        "keyFormatter":"nothing",
+        "valueFormatter":"min,max",
+        "valueInputFormat":"objectList",
+        "valueType":"List",
+        "updatedKey":"marks",
+        "operationKey":"value,value",
+        "customValueNames":"totalmarks,marksaverage"
+      },
+
+      {
+        "key":"value",
+        "keyFormatter":"custom",
+        "valueFormatter":"nothing",
+        "valueInputFormat":"",
+        "valueType":"Number",
+        "updatedKey":"values",
+        "operationKey":"none"
+      }
+
+    ],
+    "created":"845486"
+  }
+
+}
+

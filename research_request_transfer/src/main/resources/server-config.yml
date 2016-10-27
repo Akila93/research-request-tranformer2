@@ -1,0 +1,41 @@
+#version: 0.0.1
+
+# Server Port Configuration
+server:
+  applicationConnectors:
+  - type: http
+    port: 9098
+  adminConnectors:
+  - type: http
+    port: 9099
+
+# Logging settings.
+
+logging:
+
+  # Permit DEBUG, INFO, WARN and ERROR messages to be logged by appenders.
+  level: DEBUG
+
+  appenders:
+    # Log warnings and errors to stderr
+    - type: console
+      threshold: WARN
+      target: stderr
+
+    # Log info, warnings and errors to our apps' main log.
+    # Rolled over daily and retained for 5 days.
+    - type: file
+      threshold: INFO
+      currentLogFilename: "/home/nuwantha/HsenidResearch/version 15/request-transformer/research_request_transfer/src/main/resources/application.log"
+      archivedLogFilenamePattern: "/home/nuwantha/HsenidResearch/version 15/request-transformer/research_request_transfer/src/main/resources/application-%d.log.gz"
+      archivedFileCount: 5
+
+
+
+    # Log debug messages, info, warnings and errors to our apps' debug log.
+    # Rolled over hourly and retained for 6 hours
+    - type: file
+      threshold: DEBUG
+      currentLogFilename: "/home/nuwantha/HsenidResearch/version 15/request-transformer/research_request_transfer/src/main/resources/debug.log"
+      archivedLogFilenamePattern: "/home/nuwantha/HsenidResearch/version 15/request-transformer/research_request_transfer/src/main/resources/debug-%d.log.gz"
+      archivedFileCount: 6

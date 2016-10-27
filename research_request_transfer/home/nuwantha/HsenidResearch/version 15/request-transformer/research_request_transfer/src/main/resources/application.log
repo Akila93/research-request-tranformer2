@@ -1,0 +1,129 @@
+INFO  [2016-10-26 03:17:00,810] org.eclipse.jetty.util.log: Logging initialized @1612ms
+INFO  [2016-10-26 03:17:00,871] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2016-10-26 03:17:00,871] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2016-10-26 03:17:00,874] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2016-10-26 03:17:00,874] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2016-10-26 03:17:00,876] io.dropwizard.server.ServerFactory: Starting Research_Request_Transfer
+INFO  [2016-10-26 03:17:00,972] org.eclipse.jetty.setuid.SetUIDListener: Opened application@6a714237{HTTP/1.1,[http/1.1]}{0.0.0.0:9098}
+INFO  [2016-10-26 03:17:00,972] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@3f36b447{HTTP/1.1,[http/1.1]}{0.0.0.0:9099}
+INFO  [2016-10-26 03:17:00,973] org.eclipse.jetty.server.Server: jetty-9.3.9.v20160517
+INFO  [2016-10-26 03:17:01,357] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+
+    POST    /request (research.resources.RequestResource)
+    POST    /request/preview (research.resources.RequestResource)
+    GET     /specification (research.resources.SpecificationResource)
+    POST    /specification (research.resources.SpecificationResource)
+    DELETE  /specification/{appId} (research.resources.SpecificationResource)
+
+INFO  [2016-10-26 03:17:01,360] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@18ca3c62{/,null,AVAILABLE}
+INFO  [2016-10-26 03:17:01,366] io.dropwizard.setup.AdminEnvironment: tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+
+WARN  [2016-10-26 03:17:01,366] io.dropwizard.setup.AdminEnvironment: 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
+!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
+!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
+!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+INFO  [2016-10-26 03:17:01,372] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@742d4e15{/,null,AVAILABLE}
+INFO  [2016-10-26 03:17:01,381] org.eclipse.jetty.server.AbstractConnector: Started application@6a714237{HTTP/1.1,[http/1.1]}{0.0.0.0:9098}
+INFO  [2016-10-26 03:17:01,384] org.eclipse.jetty.server.AbstractConnector: Started admin@3f36b447{HTTP/1.1,[http/1.1]}{0.0.0.0:9099}
+INFO  [2016-10-26 03:17:01,384] org.eclipse.jetty.server.Server: Started @2186ms
+INFO  [2016-10-26 03:17:32,074] org.springframework.context.annotation.AnnotationConfigApplicationContext: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@4a1ed2ee: startup date [Wed Oct 26 08:47:32 IST 2016]; root of context hierarchy
+INFO  [2016-10-26 03:17:32,187] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor: JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+INFO  [2016-10-26 03:17:32,588] research.services.RequestService: 580597ff848eebb899c755c1
+INFO  [2016-10-26 04:05:40,993] org.springframework.context.support.ClassPathXmlApplicationContext: Closing org.springframework.context.support.ClassPathXmlApplicationContext@5ecddf8f: startup date [Wed Oct 26 08:46:59 IST 2016]; root of context hierarchy
+INFO  [2016-10-26 04:05:40,997] org.eclipse.jetty.server.AbstractConnector: Stopped application@6a714237{HTTP/1.1,[http/1.1]}{0.0.0.0:9098}
+INFO  [2016-10-26 04:05:40,998] org.eclipse.jetty.server.AbstractConnector: Stopped admin@3f36b447{HTTP/1.1,[http/1.1]}{0.0.0.0:9099}
+INFO  [2016-10-26 04:05:40,999] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@742d4e15{/,null,UNAVAILABLE}
+INFO  [2016-10-26 04:05:41,002] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@18ca3c62{/,null,UNAVAILABLE}
+INFO  [2016-10-26 04:05:43,490] org.eclipse.jetty.util.log: Logging initialized @1785ms
+INFO  [2016-10-26 04:05:43,551] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2016-10-26 04:05:43,552] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2016-10-26 04:05:43,554] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2016-10-26 04:05:43,555] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2016-10-26 04:05:43,556] io.dropwizard.server.ServerFactory: Starting Research_Request_Transfer
+INFO  [2016-10-26 04:05:43,655] org.eclipse.jetty.setuid.SetUIDListener: Opened application@6a714237{HTTP/1.1,[http/1.1]}{0.0.0.0:9098}
+INFO  [2016-10-26 04:05:43,655] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@3f36b447{HTTP/1.1,[http/1.1]}{0.0.0.0:9099}
+INFO  [2016-10-26 04:05:43,657] org.eclipse.jetty.server.Server: jetty-9.3.9.v20160517
+INFO  [2016-10-26 04:05:44,072] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+
+    POST    /request (research.resources.RequestResource)
+    POST    /request/preview (research.resources.RequestResource)
+    GET     /specification (research.resources.SpecificationResource)
+    POST    /specification (research.resources.SpecificationResource)
+    DELETE  /specification/{appId} (research.resources.SpecificationResource)
+
+INFO  [2016-10-26 04:05:44,076] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@18ca3c62{/,null,AVAILABLE}
+INFO  [2016-10-26 04:05:44,080] io.dropwizard.setup.AdminEnvironment: tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+
+WARN  [2016-10-26 04:05:44,080] io.dropwizard.setup.AdminEnvironment: 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
+!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
+!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
+!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+INFO  [2016-10-26 04:05:44,085] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@742d4e15{/,null,AVAILABLE}
+INFO  [2016-10-26 04:05:44,095] org.eclipse.jetty.server.AbstractConnector: Started application@6a714237{HTTP/1.1,[http/1.1]}{0.0.0.0:9098}
+INFO  [2016-10-26 04:05:44,098] org.eclipse.jetty.server.AbstractConnector: Started admin@3f36b447{HTTP/1.1,[http/1.1]}{0.0.0.0:9099}
+INFO  [2016-10-26 04:05:44,098] org.eclipse.jetty.server.Server: Started @2393ms
+INFO  [2016-10-26 04:05:50,302] org.springframework.context.annotation.AnnotationConfigApplicationContext: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@462bcf3d: startup date [Wed Oct 26 09:35:50 IST 2016]; root of context hierarchy
+INFO  [2016-10-26 04:05:50,390] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor: JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+INFO  [2016-10-26 04:05:50,629] research.services.RequestService: 580597ff848eebb899c755c1
+INFO  [2016-10-26 04:06:59,096] org.springframework.context.support.ClassPathXmlApplicationContext: Closing org.springframework.context.support.ClassPathXmlApplicationContext@5ecddf8f: startup date [Wed Oct 26 09:35:42 IST 2016]; root of context hierarchy
+INFO  [2016-10-26 04:06:59,102] org.eclipse.jetty.server.AbstractConnector: Stopped application@6a714237{HTTP/1.1,[http/1.1]}{0.0.0.0:9098}
+INFO  [2016-10-26 04:06:59,107] org.eclipse.jetty.server.AbstractConnector: Stopped admin@3f36b447{HTTP/1.1,[http/1.1]}{0.0.0.0:9099}
+INFO  [2016-10-26 04:06:59,108] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@742d4e15{/,null,UNAVAILABLE}
+INFO  [2016-10-26 04:06:59,119] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@18ca3c62{/,null,UNAVAILABLE}
+INFO  [2016-10-26 04:07:02,203] org.eclipse.jetty.util.log: Logging initialized @2387ms
+INFO  [2016-10-26 04:07:02,264] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2016-10-26 04:07:02,264] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2016-10-26 04:07:02,266] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2016-10-26 04:07:02,266] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2016-10-26 04:07:02,268] io.dropwizard.server.ServerFactory: Starting Research_Request_Transfer
+INFO  [2016-10-26 04:07:02,364] org.eclipse.jetty.setuid.SetUIDListener: Opened application@6a714237{HTTP/1.1,[http/1.1]}{0.0.0.0:9098}
+INFO  [2016-10-26 04:07:02,365] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@3f36b447{HTTP/1.1,[http/1.1]}{0.0.0.0:9099}
+INFO  [2016-10-26 04:07:02,366] org.eclipse.jetty.server.Server: jetty-9.3.9.v20160517
+INFO  [2016-10-26 04:07:02,787] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+
+    POST    /request (research.resources.RequestResource)
+    POST    /request/preview (research.resources.RequestResource)
+    GET     /specification (research.resources.SpecificationResource)
+    POST    /specification (research.resources.SpecificationResource)
+    DELETE  /specification/{appId} (research.resources.SpecificationResource)
+
+INFO  [2016-10-26 04:07:02,790] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@18ca3c62{/,null,AVAILABLE}
+INFO  [2016-10-26 04:07:02,794] io.dropwizard.setup.AdminEnvironment: tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+
+WARN  [2016-10-26 04:07:02,795] io.dropwizard.setup.AdminEnvironment: 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
+!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
+!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
+!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+INFO  [2016-10-26 04:07:02,804] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@742d4e15{/,null,AVAILABLE}
+INFO  [2016-10-26 04:07:02,817] org.eclipse.jetty.server.AbstractConnector: Started application@6a714237{HTTP/1.1,[http/1.1]}{0.0.0.0:9098}
+INFO  [2016-10-26 04:07:02,819] org.eclipse.jetty.server.AbstractConnector: Started admin@3f36b447{HTTP/1.1,[http/1.1]}{0.0.0.0:9099}
+INFO  [2016-10-26 04:07:02,820] org.eclipse.jetty.server.Server: Started @3004ms
+INFO  [2016-10-26 04:30:50,656] org.springframework.context.support.ClassPathXmlApplicationContext: Closing org.springframework.context.support.ClassPathXmlApplicationContext@5ecddf8f: startup date [Wed Oct 26 09:37:00 IST 2016]; root of context hierarchy
+INFO  [2016-10-26 04:30:50,658] org.eclipse.jetty.server.AbstractConnector: Stopped application@6a714237{HTTP/1.1,[http/1.1]}{0.0.0.0:9098}
+INFO  [2016-10-26 04:30:50,659] org.eclipse.jetty.server.AbstractConnector: Stopped admin@3f36b447{HTTP/1.1,[http/1.1]}{0.0.0.0:9099}
+INFO  [2016-10-26 04:30:50,660] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@742d4e15{/,null,UNAVAILABLE}
+INFO  [2016-10-26 04:30:50,663] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@18ca3c62{/,null,UNAVAILABLE}

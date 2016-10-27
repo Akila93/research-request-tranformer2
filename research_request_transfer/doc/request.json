@@ -1,0 +1,15 @@
+{
+  "name":"nimal",
+  "marks":
+  [
+    {
+      "subjectName":"Eng",
+      "testDate":"2014-09-43",
+      "value":"78"
+    },
+    {	"subjectName":"Maths",
+      "testDate":"2014-09-43",
+      "value":"97"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+        <bean id="ResearchRequestTransferApplication" class="research.ResearchRequestTransferApplication">
+            <property name="specificationResource" ref="SpecificationResource"/>
+            <property name="requestResource" ref="RequestResource"/>
+        </bean>
+
+        <bean id="SpecificationResource" class="research.resources.SpecificationResource">
+            <property name="specificationService" ref="SpecificationService"/>
+        </bean>
+
+        <bean id="RequestResource" class="research.resources.RequestResource">
+            <property name="service" ref="RequestService"/>
+            <property name="request" ref="Request"/>
+        </bean>
+
+        <bean id="SpecificationService" class="research.services.SpecificationService">
+            <property name="listFormatter" ref="ListFormatter"/>
+            <property name="stringFormatter" ref="StringFormatter"/>
+        </bean>
+
+        <bean id="RequestService" class="research.services.RequestService">
+                <property name="transformer" ref="RequestTransformer"/>
+        </bean>
+
+        <bean id="StringFormatter" class="research.formatengine.StringFormatter">
+
+        </bean>
+
+        <bean id="ListFormatter" class="research.formatengine.ListFormatter">
+            
+        </bean>
+
+        <bean id="NumberFormatter" class="research.formatengine.NumberFormatter"></bean>
+
+        <bean id="RequestTransformer" class="research.formatengine.RequestTransformer">
+
+            <property name="dateFormatter" ref="DateFormatter"/>
+            <property name="numberFormatter" ref="NumberFormatter"/>
+            <property name="listFormatter" ref="ListFormatter"/>
+            <property name="stringFormatter" ref="StringFormatter"/>
+
+        </bean>
+
+
+        <bean id="Request" class="research.models.Request"></bean>
+
+        <bean id="DateFormatter" class="research.formatengine.DateFormatter"> </bean>
+
+        <context:annotation-config/>
+        <context:component-scan base-package="research">
+        </context:component-scan>
+</beans>
