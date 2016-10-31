@@ -2497,3 +2497,59 @@ INFO  [2016-10-27 10:12:44,121] research.services.RequestService: requestService
 INFO  [2016-10-27 10:12:44,124] research.services.RequestService: requestService.handleRequestPreview is called
 INFO  [2016-10-27 10:12:44,127] research.services.RequestService: requestService.handleRequestPreview is called
 INFO  [2016-10-27 10:12:50,357] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:13:39,148] research.resources.SpecificationResource: available formatting request is come
+INFO  [2016-10-27 10:13:39,148] research.services.SpecificationService: specificationService.getAvailableFormatting is called
+INFO  [2016-10-27 10:13:39,597] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:13:39,597] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:13:39,601] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:13:39,604] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:13:39,606] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:13:39,611] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:13:39,614] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:13:45,545] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:32,095] research.resources.SpecificationResource: available formatting request is come
+INFO  [2016-10-27 10:15:32,095] research.services.SpecificationService: specificationService.getAvailableFormatting is called
+INFO  [2016-10-27 10:15:32,523] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:32,526] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:32,529] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:32,530] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:32,534] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:32,537] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:32,542] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:41,658] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:43,042] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:43,940] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:44,631] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:45,310] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:46,534] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:47,124] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:15:47,597] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:20:58,263] research.resources.SpecificationResource: available formatting request is come
+INFO  [2016-10-27 10:20:58,263] research.services.SpecificationService: specificationService.getAvailableFormatting is called
+INFO  [2016-10-27 10:20:58,763] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:20:58,765] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:20:58,767] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:20:58,769] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:20:58,771] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:20:58,779] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:20:58,792] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:21:06,315] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:24:11,136] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:24:52,586] research.resources.SpecificationResource: available formatting request is come
+INFO  [2016-10-27 10:24:52,586] research.services.SpecificationService: specificationService.getAvailableFormatting is called
+INFO  [2016-10-27 10:24:52,982] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:24:52,986] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:24:52,989] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:24:52,993] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:24:52,997] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:24:52,999] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:24:53,004] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:25:01,279] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:25:11,812] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:25:16,159] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:25:36,014] research.services.RequestService: requestService.handleRequestPreview is called
+INFO  [2016-10-27 10:27:28,312] org.springframework.context.support.ClassPathXmlApplicationContext: Closing org.springframework.context.support.ClassPathXmlApplicationContext@5ecddf8f: startup date [Thu Oct 27 13:44:56 IST 2016]; root of context hierarchy
+INFO  [2016-10-27 10:27:28,356] org.eclipse.jetty.server.AbstractConnector: Stopped application@2e3a5237{HTTP/1.1,[http/1.1]}{0.0.0.0:9098}
+INFO  [2016-10-27 10:27:28,359] org.eclipse.jetty.server.AbstractConnector: Stopped admin@40021799{HTTP/1.1,[http/1.1]}{0.0.0.0:9099}
+INFO  [2016-10-27 10:27:28,360] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@88a8218{/,null,UNAVAILABLE}
+INFO  [2016-10-27 10:27:28,372] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@2c0f7678{/,null,UNAVAILABLE}
