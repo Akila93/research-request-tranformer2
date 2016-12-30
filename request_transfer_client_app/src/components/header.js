@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import {Listitem} from "./listItem";
+import React, {Component} from "react";
 
-export class Header extends Component{
-    constructor(props){
+export class Header extends Component {
+    constructor(props) {
         super(props);
     }
+
     render() {
 
         let divStyle = {
 
-            backgroundColor :"black",
-            color:"white"
+            backgroundColor: "black",
+            color: "white"
 
         };
         return (

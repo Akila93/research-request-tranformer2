@@ -9,6 +9,8 @@ import research.exception.InvalidValueTypeException;
 import research.models.Specification;
 import research.models.SpecificationItem;
 
+import javax.xml.crypto.Data;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -131,9 +133,9 @@ public class RequestTransformer {
             return dateValueFormatter(value, specificationItem, formattingpatttern);
 
         } else if (type.equals("Nested")) {
-            RequestTransformer transformer = new RequestTransformer(this.specification);
+            //RequestTransformer transformer = new RequestTransformer(this.specification);
             HashMap<String, Object> map = (HashMap<String, Object>) value;
-            return transformer.transform(map);
+            return this.transform(map);
         } else if (type.equals("Number")) {
             if (!formattingpatttern.equals("nothing")) {
                 numberFormatter.setPattern(formattingpatttern);
@@ -210,9 +212,10 @@ public class RequestTransformer {
                 int listCounter = 0;
                 for (String valueFormatter : valueFormatterList) {
                    try {
-                       calculatedValue = Double.parseDouble(String.valueOf(selectMethod("research.formatengine.ListFormatter", valueFormatter).invoke(listFormatter, value, operationKeys[listCounter], specificationItem.getValueInputFormat())));
+                       calculatedValue = Double.parseDouble(String.valueOf(selectMethod("research.formatengine.ListFormatter", valueFormatter).invoke(listFormatter, value, specificationItem.getValueInputFormat().equals("objectList") ?operationKeys[listCounter] :"", specificationItem.getValueInputFormat())));
 
                    }catch (NumberFormatException error){
+                       System.err.println("line 216");
                       throw  new InvalidValueFormatterException(value +" is not a number");
 
                    }catch (ArrayIndexOutOfBoundsException error){
@@ -226,8 +229,12 @@ public class RequestTransformer {
                        listCounter++;
                 }
 
-            } catch (Exception e) {
+            } catch (IllegalAccessException e) {
+               throw new DataNotFoundException(e.getMessage());
+            }catch (NullPointerException e){
                 e.printStackTrace();
+            }catch (InvocationTargetException e){
+                throw  new DataNotFoundException(e.toString());
             }
 
 

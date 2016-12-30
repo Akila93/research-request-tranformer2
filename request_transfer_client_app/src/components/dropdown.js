@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import {Badge} from "./badge"
-import {Listitem} from "./listItem"
+import React, {Component} from "react";
+import {Listitem} from "./listItem";
 
-export class Dropdown extends Component{
-    constructor(props){
+export class Dropdown extends Component {
+    constructor(props) {
         super(props);
-        this.state={//enter:false,
+        this.state = {//enter:false,
             title: this.props.title,
-            firstRender:true
+            firstRender: true
             //leave:true,
             //enter:false
         };
@@ -15,6 +14,12 @@ export class Dropdown extends Component{
 
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (this.props != nextProps && this.props.updateOnPropsChanges == "true") {//change this
+
+            this.setState({title: nextProps.title});
+        }
+    }
 
 
     //handleMouseEnter() {
@@ -32,12 +37,11 @@ export class Dropdown extends Component{
     //}
 
 
+    getIndexOfSelected(title) {
 
-    getIndexOfSelected(title){
+        for (let x = 0; x < this.props.items.length; x++) {
 
-        for(let x=0;x< this.props.items.length;x++){
-
-            if(this.props.items[x]==title){
+            if (this.props.items[x] == title) {
                 return x;
             }
         }
@@ -45,34 +49,37 @@ export class Dropdown extends Component{
     }
 
 
-
-    whenClicked(title){
+    whenClicked(title) {
         let self = this;
-        this.setState({title: title,firstRender:false},function(){
-            if(this.state.title=="custom"){
+        this.setState({title: title, firstRender: false}, function () {
+            if (this.state.title == "custom") {
                 this.props.onCustomTypeSelect();
-            }else{this.props.onItemSelect(this.getIndexOfSelected(title),title);}
+            } else {
+                this.props.onItemSelect(this.getIndexOfSelected(title), title);
+            }
 
         }.bind(self));
 
     }
 
 
-
-    renderListItem(){
+    renderListItem() {
 
         //styleSelected['background']='#6789f7';
         //styleSelected['border']='1px solid black';
         //border: 1px solid black
-        if(this.props.noInitial){
-            let styleSelected={};
-            return <Listitem styles={styleSelected} whenClicked={this.whenClicked.bind(this)} className="" item={[]} link={"#"}/>;
+        if (this.props.noInitial) {
+            let styleSelected = {};
+            return <Listitem styles={styleSelected} whenClicked={this.whenClicked.bind(this)} className="" item={[]}
+                             link={"#"}/>;
         }
-        return this.props.items.map(function(item,index){
-            let styleSelected={};
+        //console.log("71",this.props.items);
+        return this.props.items.map(function (item, index) {
+            let styleSelected = {};
             //styleSelected['background']='#6789f7';
             //styleSelected['border']='1px solid black';
-            return <Listitem styles={styleSelected} whenClicked={this.whenClicked.bind(this)} className="" item={item} link={"#"}/>;
+            return <Listitem styles={styleSelected} whenClicked={this.whenClicked.bind(this)} className="" item={item}
+                             link={"#"}/>;
 
         }.bind(this))
     }
@@ -84,17 +91,16 @@ export class Dropdown extends Component{
             //<ul ref="dropdownlist" className={"dropdown-menu"+(this.state.enter?" show":"")}>
             //<td onMouseEnter={this.handleMouseEnter.bind(this)} onMouseLeave={this.handleMouseLeave.bind(this)}>
             <div className="dropdown table-row-cell ddown">
-                <span className="dropbtn" >{this.state.title+"  "}</span>
-                <span className={"caret mysize"}  ref={this.props.ref}/>
-                <ul ref="dropdownlist dropdown-content" className={"dropdown-menu"+(this.props.enter?" show":"")}>
+                <span className="dropbtn">{this.state.title + "  "}</span>
+                <span className={"caret mysize"} ref={this.props.ref}/>
+                <ul ref="dropdownlist dropdown-content" className={"dropdown-menu" + (this.props.enter ? " show" : "")}>
                     {this.renderListItem()}
 
                 </ul>
             </div>
-                //</td>
+            //</td>
         );
     }
-
 
 
 }

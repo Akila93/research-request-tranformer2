@@ -1,16 +1,16 @@
-export function handlePreview(func){
+export function handlePreview(func) {
 
     let specification = this.formASpecification();
-    let request=this.formARequest();
+    let request = this.formARequest();
     //console.log("specification :",request);
     console.log("inside handle preview function")
-    let previewBody={
-        specification:specification,
-        request:request,
+    let previewBody = {
+        specification: specification,
+        request: request,
     }
     console.log(previewBody);
-    Api.handlePreviewRequest(previewBody,this.handlePreviewCallback.bind(this));
-    if(func){
+    Api.handlePreviewRequest(previewBody, this.handlePreviewCallback.bind(this));
+    if (func) {
         this.setState(
             {
                 visible: {
@@ -18,10 +18,10 @@ export function handlePreview(func){
                     inputTextArea: false,
                     outputTextArea: true
                 }
-            },func
+            }, func
         );
 
-    }else{
+    } else {
         this.setState(
             {
                 visible: {
@@ -30,23 +30,23 @@ export function handlePreview(func){
                     outputTextArea: true
                 }
             }
-        );}
+        );
+    }
 }
 
 
-
-export function handleChange(event){
+export function handleChange(event) {
     this.setState({
         inputTextAreaValue: event.target.value,
-        inputTextObject:JSON.parse(event.target.value)
+        inputTextObject: JSON.parse(event.target.value)
 
     })
 }
 
 
-export function saveSpecification(){
+export function saveSpecification() {
     let specification = this.formASpecification();
-    Api.addSpecification(specification,this.saveSpecificationCallback.bind(this));
+    Api.addSpecification(specification, this.saveSpecificationCallback.bind(this));
     this.setState(
         {
             visible: {
@@ -59,22 +59,22 @@ export function saveSpecification(){
 }
 
 
-export function handleRemoveTableClick(){
+export function handleRemoveTableClick() {
 
-    let table=this.refs.tableData;
+    let table = this.refs.tableData;
     let list = this.refs.tableData.refs;
     const len = this.state.TableData.length;
-    for(let x=0;x<len;x++){
+    for (let x = 0; x < len; x++) {
         let key = this.state.TableData[x].keyValue;
-        if(list[key].state.selected){
-            this.deleteTableData(key,"none");
+        if (list[key].state.selected) {
+            this.deleteTableData(key, "none");
         }
     }
 }
 
-export function submitData(){
-    try{
-        this.request=JSON.parse(this.state.inputTextAreaValue);
+export function submitData() {
+    try {
+        this.request = JSON.parse(this.state.inputTextAreaValue);
         Api.fetchTableData(this.submitDataCallback.bind(this));
         this.setState({
             visible: {
@@ -84,7 +84,7 @@ export function submitData(){
             }
 
         });
-    }catch(err){
+    } catch (err) {
         console.log("parse errror");
     }
 

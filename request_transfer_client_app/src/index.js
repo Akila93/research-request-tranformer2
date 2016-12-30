@@ -1,9 +1,6 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { App } from './App';
-import { Badge } from './components/badge';
-import {ModalBody} from './components/modalBody';
-import {Modal} from './components/modal';
+import React from "react";
+import {render} from "react-dom";
+import {App} from "./App";
 
 render(<App />, document.getElementById('root'));
 //render(<div>

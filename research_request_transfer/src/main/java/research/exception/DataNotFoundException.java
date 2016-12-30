@@ -7,12 +7,9 @@ public class DataNotFoundException extends RuntimeException{
 
 
 
-    public DataNotFoundException(String msg) {
+    public DataNotFoundException(String msg)
+    {
         super(msg);
     }
 
-    @Override
-    public String getMessage() {
-        return super.getMessage();
-    }
 }

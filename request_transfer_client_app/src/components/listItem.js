@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
+import React, {Component} from "react";
 
-export class Listitem extends Component{
-    constructor(props){
+export class Listitem extends Component {
+    constructor(props) {
         super(props);
     }
 
 
-    render(){
+    render() {
         return (
-            <li onClick={this.handleClick.bind(this)} className={this.props.className}><a href={this.props.link}>{this.props.item}</a></li>
+            <li onClick={this.handleClick.bind(this)} className={this.props.className}><a
+                href={this.props.link}>{this.props.item}</a></li>
         );
     }
-    handleClick(){
+
+    handleClick() {
         this.props.whenClicked(this.props.item);
         //alert(this.state.title);
 

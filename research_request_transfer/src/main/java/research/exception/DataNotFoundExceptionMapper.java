@@ -17,6 +17,5 @@ public class DataNotFoundExceptionMapper implements ExceptionMapper<DataNotFound
         System.out.println("mapper catch the error");
         ErrorMessage errorMessage = new ErrorMessage(e.getMessage(), 601, "still no documetation");
         return Response.status(Response.Status.NOT_FOUND).entity(errorMessage).build();
-
     }
 }

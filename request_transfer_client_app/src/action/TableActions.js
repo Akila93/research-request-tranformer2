@@ -4,7 +4,7 @@
 import dispatcher from "../dispatcher";
 
 
-export function addTableData(keyValue,KeyFormatter,	ValueType,	ValueFormatters,handleRemoveRow,visible,parentRaw,rawVisibility,onPreview,icon,dropdownTitle,initialKey,selectedKeyFormatter,selectedValueFormatter,selectedDateInputFormatter,selectedDateOutputFormatter,rowColor,currentPaddingForLeft) {
+export function addTableData(keyValue, KeyFormatter, ValueType, ValueFormatters, handleRemoveRow, visible, parentRaw, rawVisibility, onPreview, icon, dropdownTitle, initialKey, selectedKeyFormatter, selectedValueFormatter, selectedDateInputFormatter, selectedDateOutputFormatter, rowColor, currentPaddingForLeft, titleOfTheListType, listOperations, operationValues, customNames, modalData) {
     dispatcher.dispatch({
         type: "ADD_DATA",
         keyValue,
@@ -24,14 +24,18 @@ export function addTableData(keyValue,KeyFormatter,	ValueType,	ValueFormatters,h
         selectedDateInputFormatter,
         selectedDateOutputFormatter,
         rowColor,
-        currentPaddingForLeft
+        currentPaddingForLeft,
+        titleOfTheListType,
+        listOperations,
+        operationValues,
+        customNames,
+        modalData,
     });
 }
 
 
-
-export function deleteTableData(keyValue,parentRaw,onPreview) {
-    console.log("parentRawIs"+parentRaw);
+export function deleteTableData(keyValue, parentRaw, onPreview) {
+    console.log("parentRawIs" + parentRaw);
     dispatcher.dispatch({
         type: "DELETE_DATA",
         keyValue,
@@ -41,18 +45,17 @@ export function deleteTableData(keyValue,parentRaw,onPreview) {
 }
 
 
-
 export function updateTableData(parentRaw) {
-        console.log("inside the action"+parentRaw);
-        dispatcher.dispatch({
-            type: "UPDATE_DATA",
-            parentRaw
-        });
+    console.log("inside the action" + parentRaw);
+    dispatcher.dispatch({
+        type: "UPDATE_DATA",
+        parentRaw
+    });
 }
 
 
-export function updateTableDataOnEdit(oldRef,newRef,selectedKeyFormatter,selectedValueFormatter,selectedDateInputFormatter,selectedDateOutputFormatter) {
-    console.log("inside the action:refs:",oldRef,newRef,selectedKeyFormatter,selectedValueFormatter);
+export function updateTableDataOnEdit(oldRef, newRef, selectedKeyFormatter, selectedValueFormatter, selectedDateInputFormatter, selectedDateOutputFormatter) {
+    console.log("inside the action:refs:", oldRef, newRef, selectedKeyFormatter, selectedValueFormatter);
     dispatcher.dispatch({
         type: "UPDATE_DATA_ON_EDIT",
         oldRef,
@@ -71,3 +74,17 @@ export function deleteAll() {
     });
 }
 
+
+export function updateStoreForModal(keyValue, listOperations, operationValues, customNames, modalData) {
+    dispatcher.dispatch(
+        {
+            type: "MODAL_UPDATE",
+            keyValue,
+            listOperations,
+            operationValues,
+            customNames,
+            modalData,
+
+        }
+    );
+}

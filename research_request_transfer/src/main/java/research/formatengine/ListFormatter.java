@@ -3,6 +3,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import research.ResearchRequestTransferApplication;
 import research.annotation.Format;
+import research.exception.DataNotFoundException;
+import research.exception.InvalidValueFormatterException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,23 +18,28 @@ public class ListFormatter implements Formatter{
     @Format(methodTask = "total")
     public int calculateTotal(Object objectList,String operationKey,String valueInputFormat){
         int total=0;
-        System.err.println(objectList);
-        if(valueInputFormat.equals("objectList")) {
-            List<Object> objectItemList = (List<Object>) objectList;
-            for (int i = 0; i < objectItemList.size(); i++) {
-                HashMap<String, String> map = (HashMap<String, String>) objectItemList.get(i);
-                String value = map.get(operationKey);
-                total += Integer.parseInt(value);
+            if (valueInputFormat.equals("objectList")) {
+                List<Object> objectItemList = (List<Object>) objectList;
+                for (int i = 0; i < objectItemList.size(); i++) {
+                    HashMap<String, String> map = (HashMap<String, String>) objectItemList.get(i);
+                    String value = map.get(operationKey);
+                    try{
+                        total += Integer.parseInt(value);
+                    }catch (NumberFormatException e){
+                        throw  new InvalidValueFormatterException(value +" is not a number");
+
+                    }
+                }
+            } else if (valueInputFormat.equals("valueList")) {
+                System.out.println(objectList);
+
+                List<Integer> valueList = (List<Integer>) objectList;
+                System.out.println(valueList);
+                for (int i = 0; i < valueList.size(); i++) {
+                    total += valueList.get(i);
+                    System.out.println(total);
+                }
             }
-        }else if(valueInputFormat.equals("valueList")){
-            System.out.println(objectList);
-            List<Integer> valueList = (List<Integer>) objectList;
-            System.out.println(valueList);
-            for (int i = 0; i < valueList.size(); i++) {
-                total += valueList.get(i);
-                System.out.println(total);
-            }
-        }
         return total;
     }
 
